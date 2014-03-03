@@ -1,0 +1,4 @@
+Run:
+    ./cli_client_login.py
+        and type: login
+    To get the Dropbox key

@@ -9,10 +9,7 @@ import sys
 
 from dropbox import client, rest, session
 
-# XXX Fill in your consumer key and secret below
-# You can find these at http://www.dropbox.com/developers/apps
-APP_KEY = ''
-APP_SECRET = ''
+from locals import DROPBOX_APP_KEY, DROPBOX_APP_SECRET
 
 def command(login_required=True):
     """a decorator for handling authentication and exceptions"""
@@ -248,9 +245,9 @@ class DropboxTerm(cmd.Cmd):
 
 
 def main():
-    if APP_KEY == '' or APP_SECRET == '':
-        exit("You need to set your APP_KEY and APP_SECRET!")
-    term = DropboxTerm(APP_KEY, APP_SECRET)
+    if DROPBOX_APP_KEY == '' or DROPBOX_APP_SECRET == '':
+        exit("You need to set your DROPBOX_APP_KEY and DROPBOX_APP_SECRET!")
+    term = DropboxTerm(DROPBOX_APP_KEY, DROPBOX_APP_SECRET)
     term.cmdloop()
 
 if __name__ == '__main__':

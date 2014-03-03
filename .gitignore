@@ -1,4 +1,4 @@
-dropbox/instance/myapp.db
+dropbox/token_store.txt
 locals.py
 *.pyc
 *.sw?
