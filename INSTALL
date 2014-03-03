@@ -1,0 +1,20 @@
+pip install dropbox
+    # Create an app here: https://www.dropbox.com/developers/apps/create
+        What type of app do you want to create?
+            Dropbox API app
+        What type of data does your app need to store on Dropbox?
+            Files and datastores
+        Can your app be limited to its own, private folder?
+            No.
+        What type of files does your app need access to?
+            Specific file types
+        Last question, what type of files will your app use?
+            Audio files
+
+
+        Make sure to add http://127.0.0.1:5000/dropbox-auth-finish
+            to the OAuth redirect URLs in your Dropbox app configuration.
+
+pip install flask
+
+Copy locals.py.tmpl to locals.py and edit
