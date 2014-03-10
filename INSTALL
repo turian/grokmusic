@@ -17,4 +17,6 @@ pip install dropbox
 
 pip install flask
 
+pip install requests
+
 Copy locals.py.tmpl to locals.py and edit
