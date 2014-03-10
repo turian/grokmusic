@@ -92,22 +92,24 @@ def main():
 
         print >> sys.stderr, "%s" % f["path"]
         fmedia = dbclient.api_client.media(f["path"])
-        t = track.track_from_url(fmedia["url"])
-#        print t.__dict__
+        try:
+            t = track.track_from_url(fmedia["url"])
+    #        print t.__dict__
 
-        r = requests.get(t.analysis_url)
-        if r.status_code == 200 and r.headers['content-type'] == "application/json":
-            d = os.path.split(fnew)
-            mkdir_p(d[0])
-            open(fnew, "wt").write(r.text)
-#            dbclient.api_client.put_file(fnew, r.text)
-            print >> sys.stderr, "... %s" % fnew
-#            print f["path"] + ".json"
-#            print r.json()
-        else:
-            print >> sys.stderr, "Error on %s, %s, %s" % (f["path"], r.status_code, r.headers['content-type'])
-
-#        break
+            r = requests.get(t.analysis_url)
+            if r.status_code == 200 and r.headers['content-type'] == "application/json":
+                d = os.path.split(fnew)
+                mkdir_p(d[0])
+                open(fnew, "wt").write(r.text)
+    #            dbclient.api_client.put_file(fnew, r.text)
+                print >> sys.stderr, "... %s" % fnew
+    #            print f["path"] + ".json"
+    #            print r.json()
+            else:
+                print >> sys.stderr, "Error on %s, %s, %s" % (f["path"], r.status_code, r.headers['content-type'])
+    #        break
+        except Exception, e:
+            print >> sys.stderr, type(e), e, f["path"]
 
 
 if __name__ == '__main__':
