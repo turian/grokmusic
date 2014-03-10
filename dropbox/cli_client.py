@@ -44,8 +44,9 @@ class Dropbox:
             raise("Malformed access token in %r." % (self.TOKEN_FILE,))
 
     def all_files(self):
-        return self.all_files_recurse("/Music/best")
-#        self.all_files_recurse("/")
+        return self.all_files_recurse("/Music")
+#        return self.all_files_recurse("/Music/best")
+#        return self.all_files_recurse("/")
 
     def all_files_recurse(self, path):
         print "all_files_recurse(%s)..." % path
@@ -83,6 +84,8 @@ def main():
         exit("You need to set your DROPBOX_APP_KEY and DROPBOX_APP_SECRET!")
     dbclient = Dropbox(DROPBOX_APP_KEY, DROPBOX_APP_SECRET)
     all_files = dbclient.all_files()
+    import random
+    random.shuffle(all_files)
     for f in all_files:
         fnew = DEFAULT + f["path"] + ".json"
         if os.path.exists(fnew): continue       # Skip things we've analyzed
