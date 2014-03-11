@@ -90,9 +90,9 @@ def main():
         fnew = DEFAULT + f["path"] + ".json"
         if os.path.exists(fnew): continue       # Skip things we've analyzed
 
-        print >> sys.stderr, "%s" % f["path"]
-        fmedia = dbclient.api_client.media(f["path"])
         try:
+            print >> sys.stderr, "%s" % f["path"]
+            fmedia = dbclient.api_client.media(f["path"])
             t = track.track_from_url(fmedia["url"])
     #        print t.__dict__
 
